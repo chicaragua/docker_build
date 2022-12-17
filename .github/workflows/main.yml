@@ -17,5 +17,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: relase
+          push: true
+          tags: chicaragua/docker_hello:latest
