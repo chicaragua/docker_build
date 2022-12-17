@@ -1,3 +1,3 @@
 FROM alpine:latest
 
-ENTRYPOINT "echo" "Hi, from container"
+ENTRYPOINT "echo" "Hi, from relase container"
