@@ -40,3 +40,26 @@ jobs:
           tags: |
             chicaragua/docker_hello:${{ steps.date.outputs.date }}_${{ github.run_number }}
             ghcr.io/chicaragua/docker_hello:${{ steps.date.outputs.date }}_${{ github.run_number }}
+      - name: Slack OK notification
+        uses: rtCamp/action-slack-notify@v2
+        if: ${{ job.status }} == failure
+        env:
+          SLACK_CHANNEL: ivan_belov_slack_notification
+          SLACK_COLOR: 'green'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Pushing docker_hello:${{ steps.date.outputs.date }}_${{ github.run_number }} image is SUCCESS'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          
+      - name: Slack FAIL notification
+        uses: rtCamp/action-slack-notify@v2
+        if: ${{ job.status }} == failure
+        env:
+          SLACK_CHANNEL: ivan_belov_slack_notification
+          SLACK_COLOR: 'green'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Pushing docker_hello:${{ steps.date.outputs.date }}_${{ github.run_number }} image is FAIL'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
