@@ -42,7 +42,7 @@ jobs:
             ghcr.io/chicaragua/docker_hello:${{ steps.date.outputs.date }}_${{ github.run_number }}
       - name: Slack OK notification
         uses: rtCamp/action-slack-notify@v2
-        if: ${{ job.status }} == failure
+        if: success()
         env:
           SLACK_CHANNEL: ivan_belov_slack_notification
           SLACK_COLOR: 'green'
@@ -54,7 +54,7 @@ jobs:
           
       - name: Slack FAIL notification
         uses: rtCamp/action-slack-notify@v2
-        if: ${{ job.status }} == failure
+        if: failure()
         env:
           SLACK_CHANNEL: ivan_belov_slack_notification
           SLACK_COLOR: 'green'
