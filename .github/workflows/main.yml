@@ -33,4 +33,4 @@ jobs:
           context: .
           push: true
           tags: |
-            chicaragua/docker_hello_${{ steps.date.output.date }}_${{ github.run_number }}:final
+            chicaragua/docker_hello:${{ steps.date.output.date }}_${{ github.run_number }}
